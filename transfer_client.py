@@ -136,6 +136,8 @@ def transfer(frame):
 #	print "Sending stringData...",
 	sock.send( stringData );
 #	print "Done,bytes: ",len(stringData)
+	lastresult = []
+	classlist = []
 
 	while True: #receive one frame detect list
 		length = recvall(sock,16) #get struct length first
@@ -144,7 +146,7 @@ def transfer(frame):
 		print "Get data structstr:",structstr
 		x1,y1,x2,y2,class_name = struct.unpack('!iiii%ds' % (int(length)-16),structstr)		
 		print 'Class name:',class_name,'x1:',x1,'y1:',y1,'x2:',x2,'y2:',y2
-		if class_name == 'cry':
+		if class_name == 'end':
 			break
 		else:
 			if class_name == 'no mask person':
@@ -155,20 +157,8 @@ def transfer(frame):
 				lastresult.append(item)
 				classlist.append(class_name)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                
-
+	# probably need to pass frame as parameter?
+	for class_name,x1,y1,x2,y2 in lastresult:
+		drawaim(class_name,x1,y1,x2,y2)
+	cv2.imshow('CLIENT',frame)
+	cv2.waitKey(1)
