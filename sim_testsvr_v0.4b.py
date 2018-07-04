@@ -8,7 +8,7 @@ import socket
 import numpy as np
 import random,time
 import struct
-import scipy.io as sio
+#import scipy.io as sio
 import os, sys, cv2
 
 #%matplotlib inline
@@ -27,7 +27,7 @@ def recvall(sock, count):
 if __name__ == '__main__':
 
     TCP_IP = ''
-    TCP_PORT = 5001
+    TCP_PORT = 8002
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)  
     s.bind((TCP_IP, TCP_PORT))

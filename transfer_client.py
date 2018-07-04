@@ -31,7 +31,7 @@ class Timer(object):
         else:
             return self.diff
 #=============================I am split line=============================#
-def drawaim(classname,x1,y1,x2,y2,color = (0,255,0)):
+def drawaim(frame, classname,x1,y1,x2,y2,color = (0,255,0)):
 	#draw aim rectangle like Person of Interest
 	color = (random.randint(128,255),random.randint(128,255),random.randint(128,255))
 	red = (0,0,255)
@@ -159,6 +159,6 @@ def transfer(frame):
 
 	# probably need to pass frame as parameter?
 	for class_name,x1,y1,x2,y2 in lastresult:
-		drawaim(class_name,x1,y1,x2,y2)
+		drawaim(frame, class_name,x1,y1,x2,y2)
 	cv2.imshow('CLIENT',frame)
 	cv2.waitKey(1)
